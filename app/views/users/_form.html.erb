@@ -1,0 +1,21 @@
+<%= form_with(model: @user) do |form| %>
+  <%= render 'shared/errors', obj: @user %>
+
+  <p>
+    <%= form.label :username %>
+    <%= form.text_field :username %>
+  </p>
+
+  <p>
+    <%= form.label :email %>
+    <%= form.email_field :email %>
+  </p>
+  <p>
+    <%= form.label :password %>
+    <%= form.password_field :password %>
+  </p>
+
+  <div class="actions">
+    <%= form.submit 'Sign up' %>
+  </div>
+<% end %>
