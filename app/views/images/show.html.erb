@@ -2,6 +2,7 @@
 
 <h1>Showing image details</h1>
 <h2><%= @image.title %></h2>
+<%= image_tag @image.picture.url if @image.picture? %>
 <p><%= @image.description %></p>
 
 <%= link_to 'Edit', edit_image_path(@image) %> |

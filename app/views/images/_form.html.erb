@@ -6,6 +6,12 @@
   </p>
 
   <p>
+    <%= form.label :picture %>
+    <%= form.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
+  </p>
+
+
+  <p>
     <%= form.label :description %>
     <%= form.text_area :description %>
   </p>
