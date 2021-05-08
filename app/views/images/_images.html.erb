@@ -1,0 +1,20 @@
+
+<div class="container">
+
+  <% @images.each do |image| %>
+  <div class="card" style="width: 18rem;">
+    <img class="card-img-top" src="..." alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title"><%= image.title %></h5>
+      <p class="card-text"><%= image.description %><br>by <%= image.user.username %></p>
+      <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+      <div class="text-white">
+        <%= link_to 'Show', image, class: "btn btn-outline-success" %>
+        <%= link_to 'Edit', edit_image_path(image), class: "btn btn-outline-success" %>
+        <%= link_to 'Destroy', image, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-success" %>
+      </div>
+    </div>
+  </div>
+  <% end %>
+
+</div>
