@@ -22,7 +22,7 @@ class ImagesController < ApplicationController
   # POST /images or /images.json
   def create
     @image = Image.new(image_params)
-
+    @image.user = User.first
     respond_to do |format|
       if @image.save
         format.html { redirect_to @image, notice: "Image was successfully created." }
