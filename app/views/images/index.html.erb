@@ -9,7 +9,7 @@
       <img class="card-img-top" src="..." alt="Card image cap">
       <div class="card-body">
         <h5 class="card-title"><%= image.title %></h5>
-        <p class="card-text"><%= image.description %></p>
+        <p class="card-text"><%= image.description %><br>by <%= image.user.username %></p>
         <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
         <div class="text-white">
           <%= link_to 'Show', image, class: "btn btn-outline-success" %>
