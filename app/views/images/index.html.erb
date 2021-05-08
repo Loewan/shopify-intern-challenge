@@ -1,9 +1,10 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Images</h1>
-
-    <%= render 'images' %>
-
+  <div class="flickr_pagination">
+    <%= will_paginate @images, :container => false %>
+  </div>
+  <%= render 'images' %>
 <br>
 
 <%= link_to 'New Image', new_image_path, class: 'btn btn-outline-success' %>

@@ -1,8 +1,9 @@
 <p id="notice"><%= notice %></p>
 
 <h1><%= @user.username %></h1>
-
+<%= link_to 'Edit your profile', edit_user_path(@user), class: "btn btn-outline-success" %>
+<div class="flickr_pagination">
+  <%= will_paginate @images, :container => false %>
+</div>
 <%= render 'images/images' %>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', images_path %>
+<%= link_to 'All Users', users_path %>

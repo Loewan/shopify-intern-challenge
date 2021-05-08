@@ -5,6 +5,10 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def index
+    @users = User.paginate(page: params[:page], per_page: 5)
+  end
+
   def create
     @user = User.new(user_params)
     if @user.save
@@ -21,14 +25,14 @@ class UsersController < ApplicationController
   def update
     if @user.update(user_params)
       flash[:notice] = 'Your account information was successfully updated'
-      redirect_to images_path
+      redirect_to @user
     else
       render 'edit'
     end
   end
 
   def show
-    @images = @user.images
+    @images = @user.images.paginate(page: params[:page], per_page: 5)
   end
 
   private
