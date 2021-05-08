@@ -11,6 +11,16 @@
     </div>
   <% end %>
 
+  <p>
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </p>
+
+  <p>
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </p>
+
   <div class="actions">
     <%= form.submit %>
   </div>
