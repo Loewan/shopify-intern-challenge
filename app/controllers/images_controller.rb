@@ -1,5 +1,7 @@
 class ImagesController < ApplicationController
   before_action :set_image, only: %i[ show edit update destroy ]
+  before_action :require_user, except: [:show, :index]
+  before_action :require_same_user, only: [:edit, :update, :destroy]
 
   # GET /images or /images.json
   def index
@@ -22,7 +24,7 @@ class ImagesController < ApplicationController
   # POST /images or /images.json
   def create
     @image = Image.new(image_params)
-    @image.user = User.first
+    @image.user = current_user
     respond_to do |format|
       if @image.save
         format.html { redirect_to @image, notice: "Image was successfully created." }
@@ -49,6 +51,7 @@ class ImagesController < ApplicationController
 
   # DELETE /images/1 or /images/1.json
   def destroy
+    File.delete('public/' + @image.picture.url) if @image.picture.url
     @image.destroy!
     respond_to do |format|
       format.html { redirect_to images_url, notice: "Image was successfully destroyed." }
@@ -65,5 +68,12 @@ class ImagesController < ApplicationController
     # Only allow a list of trusted parameters through.
     def image_params
       params.require(:image).permit(:title, :picture, :description)
+    end
+
+    def require_same_user
+      if current_user != @image.user
+        flash[:alert] = "You can only edit or delete your own images."
+        redirect_to @image
+      end
     end
 end

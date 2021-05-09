@@ -9,12 +9,14 @@
   <div class="card" style="width: 18rem;">
     <img class="card-img-top" src="..." alt="Card image cap">
     <div class="card-body">
-      <h5 class="card-title"></h5>
+      <h5 class="card-title"><%= user.username %></h5>
       <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
-      <div class="text-white">
-        <%= link_to user.username, user, class: "btn btn-outline-success" %>
-        <%= link_to 'Edit', edit_image_path(user), class: "btn btn-outline-success" %>
 
+      <div class="text-white">
+        <%= link_to 'View Profile', user, class: "btn btn-outline-success" %>
+        <% if logged_in? && user == current_user %>
+          <%= link_to 'Edit', edit_image_path(user), class: "btn btn-outline-success" %>
+        <% end %>
       </div>
     </div>
   </div>

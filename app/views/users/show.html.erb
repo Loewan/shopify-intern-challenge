@@ -1,7 +1,13 @@
-<p id="notice"><%= notice %></p>
+<% flash.each do |type, msg| %>
+  <div class="alert alert-info">
+    <%= msg %>
+  </div>
+<% end %>
 
 <h1><%= @user.username %></h1>
-<%= link_to 'Edit your profile', edit_user_path(@user), class: "btn btn-outline-success" %>
+<% if logged_in? && @user == current_user %>
+  <%= link_to 'Edit your profile', edit_user_path(@user), class: "btn btn-outline-success" %>
+<% end %>
 <div class="flickr_pagination">
   <%= will_paginate @images, :container => false %>
 </div>

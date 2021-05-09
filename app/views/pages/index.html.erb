@@ -1,1 +1,7 @@
 <h1>This is the home page</h1>
+<% flash.each do |type, msg| %>
+  <div class="alert alert-info">
+    <%= msg %>
+  </div>
+<% end %>
+<%= link_to 'Signup', signup_path, class: 'btn btn-success' %>
