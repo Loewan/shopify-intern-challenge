@@ -6,8 +6,9 @@ https://docs.google.com/document/d/1ZKRywXQLZWOqVOHC4JkF3LqdpO3Llpfk_CkZPR8bjak/
 * Ruby version 2.7.2
 * Rails version 6.1.3.2
 
+* Start development server first run 'yarn add bootstrap@4.5.0 jquery popper.js' then start server using 'rails server'
 * Run tests using 'rails test'
-* Start development server using 'rails server'
+
 
 Features:
 * Create a user profile to upload images.
