@@ -1,7 +1,7 @@
-<h1>This is the home page</h1>
-<% flash.each do |type, msg| %>
-  <div class="alert alert-info">
-    <%= msg %>
+<div class="container" id="home-container">
+  <div class="jumbotron text-center text-black">
+    <h1 class="display-4">Image Repository</h1>
+
+    <%= link_to 'Signup', signup_path, class: 'btn btn-primary text-white' %>
   </div>
-<% end %>
-<%= link_to 'Signup', signup_path, class: 'btn btn-success' %>
+</div>

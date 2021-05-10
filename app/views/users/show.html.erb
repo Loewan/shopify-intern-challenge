@@ -1,15 +1,31 @@
-<% flash.each do |type, msg| %>
-  <div class="alert alert-info">
-    <%= msg %>
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-10 text-center">
+      <h1><%= @user.username %></h1>
+    </div>
   </div>
+</div>
+
+<% if logged_in? && @user == current_user %>
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-10 text-center">
+      <%= link_to 'Edit your profile', edit_user_path(@user), class: "btn btn-success text-white" %>
+    </div>
+  </div>
+</div>
 <% end %>
 
-<h1><%= @user.username %></h1>
-<% if logged_in? && @user == current_user %>
-  <%= link_to 'Edit your profile', edit_user_path(@user), class: "btn btn-outline-success" %>
-<% end %>
 <div class="flickr_pagination">
   <%= will_paginate @images, :container => false %>
 </div>
+
 <%= render 'images/images' %>
-<%= link_to 'All Users', users_path %>
+
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-10 text-center">
+      <%= link_to 'Return to all users', users_path %>
+    </div>
+  </div>
+</div>

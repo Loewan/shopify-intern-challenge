@@ -1,16 +1,23 @@
-<% flash.each do |type, msg| %>
-  <div class="alert alert-info">
-    <%= msg %>
+<div class="row justify-content-md-center">
+  <div class="col-10 mt-4">
+    <div class="card mb-3 shadow mb-5 bg-white rounded">
+      <% if @image.picture? %>
+        <%= image_tag @image.picture.url, class: 'card-img-top'%>
+      <% end %>
+      <div class="card-body">
+        <h5 class="card-title"><%= @image.title %></h5>
+        <p class="card-text"><%= @image.description%></p>
+        <p class="card-text">
+        <small class="text-muted">Created <%= time_ago_in_words(@image.created_at) %> ago</small> |
+        <small class="text-muted">Edited <%= time_ago_in_words(@image.updated_at) %> ago </small><br>
+        <small class="text-muted font-italic">by <%= link_to @image.user.username, user_path(@image.user) %></small></p>
+        <div class="text-white">
+          <% if logged_in? && @image.user == current_user %>
+            <%= link_to 'Edit', edit_image_path(@image), class: "btn btn-outline-success" %>
+            <%= link_to 'Delete', @image, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-danger" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
-<% end %>
-
-<h1>Showing image details</h1>
-<h2><%= @image.title %></h2>
-<%= image_tag @image.picture.url if @image.picture? %>
-<p><%= @image.description %></p>
-
-<% if logged_in? && @image.user == current_user %>
-  <%= link_to 'Edit', edit_image_path(@image), class: "btn btn-outline-success" %>
-  <%= link_to 'Destroy', @image, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-danger" %>
-<% end %><br>
-<%= link_to 'Back', images_path, class: 'btn' %>
+</div>
